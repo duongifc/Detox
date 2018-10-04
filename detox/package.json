@@ -1,5 +1,5 @@
 {
-  "name": "detox",
+  "name": "detox-no-log-result-only",
   "description": "E2E tests and automation for mobile",
   "version": "9.0.4",
   "bin": {

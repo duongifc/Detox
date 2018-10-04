@@ -18,7 +18,7 @@ async function execWithRetriesAndLogs(bin, options, statusLogs, retries = 10, in
   try {
     await retry({retries, interval}, async (retryNumber) => {
       if (statusLogs && statusLogs.trying) {
-        log.debug({ event: 'EXEC_TRY', retryNumber }, statusLogs.trying);
+//         log.debug({ event: 'EXEC_TRY', retryNumber }, statusLogs.trying);
       }
 
       result = await exec(cmd, { timeout: execTimeout });
@@ -31,9 +31,9 @@ async function execWithRetriesAndLogs(bin, options, statusLogs, retries = 10, in
     const silent = _.get(options, 'silent', false);
     const level = silent ? 'debug' : 'error';
 
-    log[level]({ event: 'EXEC_FAIL' }, `"${cmd}" failed with ${_failReason}, stdout and stderr:\n`);
-    log[level]({ event: 'EXEC_FAIL', stdout: true }, err.stdout);
-    log[level]({ event: 'EXEC_FAIL', stderr: true }, err.stderr);
+//     log[level]({ event: 'EXEC_FAIL' }, `"${cmd}" failed with ${_failReason}, stdout and stderr:\n`);
+//     log[level]({ event: 'EXEC_FAIL', stdout: true }, err.stdout);
+//     log[level]({ event: 'EXEC_FAIL', stderr: true }, err.stderr);
 
     throw err;
   }
@@ -46,7 +46,7 @@ async function execWithRetriesAndLogs(bin, options, statusLogs, retries = 10, in
   _logExecOutput(log, result);
 
   if (statusLogs && statusLogs.successful) {
-    log.debug({ event: 'EXEC_SUCCESS' }, statusLogs.successful);
+//     log.debug({ event: 'EXEC_SUCCESS' }, statusLogs.successful);
   }
 
   //if (result.childProcess.exitCode !== 0) {
@@ -55,11 +55,11 @@ async function execWithRetriesAndLogs(bin, options, statusLogs, retries = 10, in
   //}
 
   if (typeof result.stdout === 'string') {
-    result.stdout = result.stdout.replace(/\r\n/g, '\n');
+//     result.stdout = result.stdout.replace(/\r\n/g, '\n');
   }
 
   if (typeof result.stderr === 'string') {
-    result.stderr = result.stderr.replace(/\r\n/g, '\n');
+//     result.stderr = result.stderr.replace(/\r\n/g, '\n');
   }
 
   return result;
